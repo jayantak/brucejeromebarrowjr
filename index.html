@@ -8,19 +8,34 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
       rel="stylesheet"
     />
-    <link 
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lora:ital@0;1&display=swap" 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lora:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <style>
+      :root {
+        --primary-color: #2c5282;
+        --accent-color: #805ad5;
+        --warm-bg: #fdf8f3;
+        --subtle-accent: #f0e7db;
+        --text-primary: #2d3748;
+        --text-secondary: #4a5568;
+      }
+
       body {
         font-family: "Lora", "Georgia", serif;
         margin: 0;
         padding: 20px;
-        background-color: #f5f5f5;
-        background-image: linear-gradient(to bottom, #ffffff, #f5f5f5);
-        color: #333;
+        background-color: var(--warm-bg);
+        background-image: linear-gradient(
+          135deg,
+          var(--warm-bg),
+          #fff,
+          var(--subtle-accent)
+        );
+        color: var(--text-primary);
         line-height: 1.6;
+        min-height: 100vh;
       }
 
       .container {
@@ -30,14 +45,16 @@
         background-color: white;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         border-radius: 16px;
+        border: 1px solid rgba(128, 90, 213, 0.1);
       }
 
       .header {
         text-align: center;
         padding: 40px 0;
-        border-bottom: 1px solid #eaeaea;
+        border-bottom: 1px solid var(--subtle-accent);
         margin-bottom: 60px;
         position: relative;
+        background: linear-gradient(to bottom, transparent, var(--warm-bg));
       }
 
       .header::after {
@@ -48,12 +65,17 @@
         transform: translateX(-50%);
         width: 100px;
         height: 3px;
-        background: linear-gradient(to right, transparent, #2c3e50, transparent);
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--primary-color),
+          transparent
+        );
       }
 
       .dates {
         font-style: italic;
-        color: #666;
+        color: var(--text-secondary);
         margin: 15px 0;
         font-size: 1.1em;
       }
@@ -73,15 +95,16 @@
 
       .photo-frame {
         border: 16px solid #fff;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        box-shadow: 0 8px 24px rgba(44, 82, 130, 0.08);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         position: relative;
         border-radius: 4px;
+        background: linear-gradient(45deg, var(--warm-bg), white);
       }
 
       .photo-frame:hover {
         transform: scale(1.02) translateY(-5px);
-        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 12px 32px rgba(44, 82, 130, 0.12);
       }
 
       .text-section {
@@ -89,14 +112,14 @@
         padding: 30px;
         background-color: #fff;
         border-radius: 12px;
-        border: 1px solid #eaeaea;
+        border: 1px solid var(--subtle-accent);
       }
 
       h1 {
         font-family: "Playfair Display", serif;
         font-size: clamp(32px, 5vw, 48px);
         margin-bottom: 20px;
-        color: #2c3e50;
+        color: var(--primary-color);
         font-weight: 600;
         letter-spacing: -0.02em;
       }
@@ -104,7 +127,7 @@
       .photo-placeholder {
         width: 100%;
         aspect-ratio: 3/4;
-        background-color: #f8f8f8;
+        background-color: var(--warm-bg);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -116,31 +139,47 @@
         margin-bottom: 24px;
         font-size: clamp(16px, 2.5vw, 18px);
         line-height: 1.8;
-        color: #444;
+        color: var(--text-secondary);
+      }
+
+      p::first-letter {
+        color: var(--primary-color);
+        font-size: 1.2em;
+        font-family: "Playfair Display", serif;
       }
 
       .slideshow-section {
         margin-top: 80px;
         padding: 60px 40px;
-        background-color: #fafafa;
+        background: linear-gradient(
+          to bottom right,
+          var(--warm-bg),
+          white,
+          var(--subtle-accent)
+        );
         border-radius: 16px;
-        border: 1px solid #eaeaea;
+        border: 1px solid var(--subtle-accent);
       }
 
       .memory-title {
         text-align: center;
         font-family: "Playfair Display", serif;
         font-size: 32px;
-        color: #2c3e50;
+        color: var(--primary-color);
         margin-bottom: 40px;
         font-weight: 600;
       }
 
       .decorative-line {
         height: 1px;
-        background: linear-gradient(to right, transparent, #ccc, transparent);
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-color),
+          transparent
+        );
         margin: 40px 0;
-        opacity: 0.6;
+        opacity: 0.3;
       }
 
       /* Fade-in animation refinements */
@@ -149,8 +188,14 @@
       }
 
       @keyframes fadeIn {
-        0% { opacity: 0; transform: translateY(10px); }
-        100% { opacity: 1; transform: translateY(0); }
+        0% {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* Responsive layout improvements */
@@ -208,10 +253,17 @@
           </p>
 
           <p>
-            Jerry graduated from Brandon High School. Shortly after he was
-            employed as a lineman and then soon after started a career and
-            became a member of the Local 915 Electricians Union, where he
-            retired after 50+ years of service.
+            Jerry graduated from Brandon High School. After graduating he
+            attended Hillsborough Community College with plans to major in
+            Animal Husbandry. Having several part time jobs along the way he
+            ended up landing a job with Tampa Electric Company as a lineman.
+          </p>
+          <p>
+            A few years later he joined IBEW Local 915 Electrical Union working
+            his way to be a Journeyman which took him to many cities across the
+            United States. The last years with the Union he was the Assistant
+            Business Manager of Local 915 based in Tampa Florida and retired
+            after 50+ years of service.
           </p>
 
           <p>He enjoyed hunting, archery, fishing and skeet shooting.</p>
