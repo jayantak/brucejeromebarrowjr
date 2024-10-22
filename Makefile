@@ -1,2 +1,2 @@
 run_add_song_to_video:
-	./scripts/add_song_to_video.sh media/bruce_jerome_barrow_jr.mp4 media/faith_hill_there_youll_be.mp3 media/brucebarrowfade.mp4
+	./scripts/add_song_to_video.sh media media media/brucebarrowfade.mp4
